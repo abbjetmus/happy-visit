@@ -122,64 +122,64 @@ export default {
   },
   methods: {
     clickedEmoji (value) {
-      // if (this.hasVotedToday !== true) {
-      let update
-      let icon
-      const time = date.formatDate(Date.now(), 'HH:mm')
-      switch (value) {
-        case 'emoji_happy':
-          update = { happy: increment }
-          icon = 'emoji_happy'
-          break
-        case 'emoji_neutral':
-          update = { neutral: increment }
-          icon = 'emoji_neutral'
-          break
-        case 'emoji_sad':
-          update = { sad: increment }
-          icon = 'emoji_sad'
-          break
-        case 'emoji_alien':
-          update = { alien: increment }
-          icon = 'emoji_alien'
-          break
-        case 'emoji_cry':
-          update = { cry: increment }
-          icon = 'emoji_cry'
-          break
-        case 'emoji_heart_eyes':
-          update = { heart_eyes: increment }
-          icon = 'emoji_heart_eyes'
-          break
-        case 'emoji_clown':
-          update = { clown: increment }
-          icon = 'emoji_clown'
-          break
-        case 'emoji_excited':
-          update = { excited: increment }
-          icon = 'emoji_excited'
-          break
-        case 'emoji_silly':
-          update = { silly: increment }
-          icon = 'emoji_silly'
-          break
-        case 'emoji_angry':
-          update = { angry: increment }
-          icon = 'emoji_angry'
-          break
-        default:
-          break
-      }
-      happydays.doc(this.currentDate).update(update).then(result => {
-        happydays.doc(this.currentDate).collection('voters').doc(this.currentUser.id).set({ id: this.currentUser.id, name: `${this.currentUser.firstName} ${this.currentUser.lastName}`, time: time, icon: icon }).then(res => {
-          this.hasVotedToday = true
+      if (this.hasVotedToday !== true) {
+        let update
+        let icon
+        const time = date.formatDate(Date.now(), 'HH:mm')
+        switch (value) {
+          case 'emoji_happy':
+            update = { happy: increment }
+            icon = 'emoji_happy'
+            break
+          case 'emoji_neutral':
+            update = { neutral: increment }
+            icon = 'emoji_neutral'
+            break
+          case 'emoji_sad':
+            update = { sad: increment }
+            icon = 'emoji_sad'
+            break
+          case 'emoji_alien':
+            update = { alien: increment }
+            icon = 'emoji_alien'
+            break
+          case 'emoji_cry':
+            update = { cry: increment }
+            icon = 'emoji_cry'
+            break
+          case 'emoji_heart_eyes':
+            update = { heart_eyes: increment }
+            icon = 'emoji_heart_eyes'
+            break
+          case 'emoji_clown':
+            update = { clown: increment }
+            icon = 'emoji_clown'
+            break
+          case 'emoji_excited':
+            update = { excited: increment }
+            icon = 'emoji_excited'
+            break
+          case 'emoji_silly':
+            update = { silly: increment }
+            icon = 'emoji_silly'
+            break
+          case 'emoji_angry':
+            update = { angry: increment }
+            icon = 'emoji_angry'
+            break
+          default:
+            break
+        }
+        happydays.doc(this.currentDate).update(update).then(result => {
+          happydays.doc(this.currentDate).collection('voters').doc(this.currentUser.id).set({ id: this.currentUser.id, name: `${this.currentUser.firstName} ${this.currentUser.lastName}`, time: time, icon: icon }).then(res => {
+            this.hasVotedToday = true
+          })
         })
-      })
-      this.$q.notify({
-        message: 'Tack för ditt svar!',
-        color: 'green'
-      })
-      // }
+        this.$q.notify({
+          message: 'Tack för ditt svar!',
+          color: 'green'
+        })
+      }
     },
     scheduleHappyDay (time, triggerThis) {
       // get hour and minute from hour:minute param received, ex.: '16:00'
