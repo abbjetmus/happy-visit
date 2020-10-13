@@ -15,8 +15,7 @@ export default {
     ResetPasswordComponent: () => import('../components/ResetPasswordComponent')
   },
   props: {
-    show: { type: Boolean, required: true },
-    toReturnAfterCancel: { type: String, required: false }
+    show: { type: Boolean, required: true }
   },
   data () {
     return {
@@ -29,7 +28,6 @@ export default {
       this.dialogShow = false
       this.mode = 1
       this.$emit('update:show', this.dialogShow)
-      this.$emit('returnAfterCancel', this.toReturnAfterCancel)
     }
   },
   watch: {

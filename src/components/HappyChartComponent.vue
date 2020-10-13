@@ -4,16 +4,16 @@
         <bar-chart-component :chartData="chartData" :options="options"></bar-chart-component>
       </div>
       <div style="width: 800px; padding-top: 0;">
-        <span class="col-auto text-h4" style="margin-left: 38px;">&#128125;</span>
-        <span class="col-auto text-h4" style="margin-left: 25px;">&#128545;</span>
-        <span class="col-auto text-h4" style="margin-left: 25px;">&#129313;</span>
-        <span class="col-auto text-h4" style="margin-left: 24px;">&#128546;</span>
-        <span class="col-auto text-h4" style="margin-left: 24px;">&#129321;</span>
-        <span class="col-auto text-h4" style="margin-left: 24px;">&#128578;</span>
-        <span class="col-auto text-h4" style="margin-left: 24px;">&#128525;</span>
-        <span class="col-auto text-h4" style="margin-left: 24px;">&#128528;</span>
-        <span class="col-auto text-h4" style="margin-left: 24px;">&#128543;</span>
-        <span class="col-auto text-h4" style="margin-left: 24px;">&#129322;</span>
+        <span id="alien" class="col-auto text-h4" style="margin-left: 38px;">&#128125;</span>
+        <span id="angry" class="col-auto text-h4" style="margin-left: 25px;">&#128545;</span>
+        <span id="clown" class="col-auto text-h4" style="margin-left: 25px;">&#129313;</span>
+        <span id="cry" class="col-auto text-h4" style="margin-left: 24px;">&#128546;</span>
+        <span id="excited" class="col-auto text-h4" style="margin-left: 24px;">&#129321;</span>
+        <span id="happy" class="col-auto text-h4" style="margin-left: 24px;">&#128578;</span>
+        <span id="heart_eyes" class="col-auto text-h4" style="margin-left: 24px;">&#128525;</span>
+        <span id="neutral" class="col-auto text-h4" style="margin-left: 24px;">&#128528;</span>
+        <span id="sad" class="col-auto text-h4" style="margin-left: 24px;">&#128543;</span>
+        <span id="silly" class="col-auto text-h4" style="margin-left: 24px;">&#129322;</span>
       </div>
     </div>
 </template>
@@ -34,18 +34,6 @@ export default {
   data () {
     return {
       document: null,
-      emojis: [
-        ['alien', '&#57612;'],
-        ['angry', '&#128545;'],
-        ['clown', '&#129313;'],
-        ['cry', '&#128546;'],
-        ['excited', '&#129321;'],
-        ['happy', '&#128578;'],
-        ['heart_eyes', '&#128525;'],
-        ['neutral', '&#128528;'],
-        ['sad', '&#128543;'],
-        ['silly', '&#129322;']
-      ],
       dateOptions: [this.currendate],
       chartData: {
         datasets: [{
@@ -89,6 +77,7 @@ export default {
         if (currentdate != null) {
           this.$bind('document', happydays.doc(currentdate)).then(val => {
             if (val != null) {
+              delete val.date
               const sorted = Object.entries(val).sort((a, b) => {
                 return (a[0] < b[0]) ? -1 : (a[0] > b[0]) ? 1 : 0
               })
@@ -112,6 +101,7 @@ export default {
     },
     document: function (val) {
       if (val != null) {
+        delete val.date
         const sorted = Object.entries(val).sort((a, b) => {
           return (a[0] < b[0]) ? -1 : (a[0] > b[0]) ? 1 : 0
         })

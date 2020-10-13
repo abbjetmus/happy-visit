@@ -36,7 +36,7 @@
     <q-page-container>
       <router-view />
     </q-page-container>
-    <sign-in-sign-up-dialog :show.sync="signInSignUpDialog" :toReturnAfterCancel="toReturnAfterCancel" @returnAfterCancel="afterDialogCancel"></sign-in-sign-up-dialog>
+    <sign-in-sign-up-dialog :show.sync="signInSignUpDialog"></sign-in-sign-up-dialog>
   </q-layout>
 </template>
 
@@ -80,8 +80,7 @@ export default {
   },
   data () {
     return {
-      signInSignUpDialog: false,
-      toReturnAfterCancel: ''
+      signInSignUpDialog: false
     }
   },
   computed: {
@@ -92,15 +91,6 @@ export default {
     ...mapMutations('settings', ['setCurrentDate']),
     showSignInSignUpDialog () {
       this.signInSignUpDialog = true
-    },
-    goToNewUppdrag () {},
-    afterDialogCancel (value) {
-      if (value === 'create') {
-        this.toReturnAfterCancel = ''
-        if (this.isAuthenticated) {
-          this.$router.push('/skapa-uppdrag').catch(err => { console.error(err) })
-        }
-      }
     }
   }
 }

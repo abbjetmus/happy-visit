@@ -1,3 +1,4 @@
 export default {
-  currentDate: ''
+  currentDate: '',
+  signInSignUpDialog: false
 }

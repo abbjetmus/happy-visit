@@ -2,7 +2,7 @@
   <q-scroll-area style="height: 100%;">
     <div v-for="(vote, index) in voters" :key="index" class="caption">
       <q-chat-message
-      size="12"
+        size="12"
         :name="vote.name"
         sent
         :stamp="vote.time">
@@ -36,7 +36,7 @@ export default {
       // call it upon creation too
       immediate: true,
       handler (date) {
-        this.$bind('voters', db.collection('happydays').doc(date).collection('voters'))
+        this.$bind('voters', db.collection('happydays').doc(date).collection('voters').orderBy('time', 'desc'))
       }
     }
   }
