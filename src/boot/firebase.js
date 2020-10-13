@@ -10,7 +10,6 @@ export default ({ store, Vue }) => {
   Vue.use(firestorePlugin)
 
   const config = process.env.firebaseConfig
-  console.log(config)
   firebaseService.fBInit(config)
 
   // Tell the application what to do when the
