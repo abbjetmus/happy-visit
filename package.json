@@ -1,8 +1,8 @@
 {
   "name": "happy-visit",
   "version": "0.0.1",
-  "description": "A Quasar Framework app",
-  "productName": "Quasar App",
+  "description": "Applikationen som mäter hur ni känner er idag",
+  "productName": "Happy Visit",
   "author": "jeton.mustini@gmail.com",
   "private": true,
   "scripts": {
