@@ -15,7 +15,7 @@
       </div>
 
       <div class="row justify-center text-center q-mt-lg">
-        <q-select dense style="width:200px; padding: 0px;" outlined v-model="selectedOption" :options="happydays" :option-value="(item) => item === null ? null : item.date" :option-label="(item) => item === null ? null : item.date"/>
+        <q-select color="orange" dense style="width:200px; padding: 0px;" outlined v-model="selectedOption" :options="happydays" :option-value="(item) => item === null ? null : item.date" :option-label="(item) => item === null ? null : item.date"/>
       </div>
 
       <div class="row justify-center q-mt-lg">
