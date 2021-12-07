@@ -9,6 +9,16 @@ const routes = [
         path: '/vote',
         component: () => import('pages/HappyVisitPage.vue'),
         meta: { requiresAuth: true }
+      },
+      {
+        path: '/our-orders',
+        component: () => import('pages/OurOrdersPage.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: '/order',
+        component: () => import('pages/OrderPage.vue'),
+        meta: { requiresAuth: true }
       }
     ]
   },

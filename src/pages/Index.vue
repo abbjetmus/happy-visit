@@ -15,7 +15,7 @@
       </div>
 
       <div class="row justify-center text-center q-mt-lg">
-        <q-select color="orange" dense style="width:200px; padding: 0px;" outlined v-model="selectedOption" :options="happydays" :option-value="(item) => item === null ? null : item.date" :option-label="(item) => item === null ? null : item.date"/>
+        <q-select color="blue" dense style="width:200px; padding: 0px;" outlined v-model="selectedOption" :options="happydays" :option-value="(item) => item === null ? null : item.date" :option-label="(item) => item === null ? null : item.date"/>
       </div>
 
       <div class="row justify-center q-mt-lg">
@@ -43,6 +43,7 @@
 import { mapGetters } from 'vuex'
 import { db } from '../boot/firebase.js'
 import { date } from 'quasar'
+import { currentUser } from 'src/store/user/getters.js'
 
 export default {
   name: 'index',
@@ -54,13 +55,17 @@ export default {
       signInSignUpDialog: false
     }
   },
+  mounted () {
+    console.log(this.currentUser)
+  },
   components: {
     HappyChartComponent: () => import('../components/HappyChartComponent.vue'),
     MessageListComponent: () => import('../components/MessageListComponent.vue'),
     SignInSignUpDialog: () => import('../dialogs/SignInSignUpDialog.vue')
   },
   computed: {
-    ...mapGetters('auth', ['isAuthenticated'])
+    ...mapGetters('auth', ['isAuthenticated']),
+    ...mapGetters('user', ['currentUser'])
   },
   methods: {
     goToTodaysVote () {
@@ -80,6 +85,15 @@ export default {
   },
   firestore: {
     happydays: db.collection('happydays')
+  },
+  currentUser: {
+    // call it upon creation too
+    immediate: true,
+    handler (kalle) {
+      if (kalle) {
+        console.log(kalle)
+      }
+    }
   }
 }
 </script>
